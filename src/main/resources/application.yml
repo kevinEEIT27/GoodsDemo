@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+spring:
+  main:
+    allow-circular-references: true
+  h2:
+    console:
+      enabled: true
+      path: '/h2' # URL
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1 # h2 database
+    driver-class-name: org.h2.Driver # driver
+    username: sa # database
+    password:  # database
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  profiles:
+    active: native
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        bytecode:
+          provider: cglib
+  sql:
+    init:
+      encoding: UTF-8
+  swagger:
+    enabled: true
